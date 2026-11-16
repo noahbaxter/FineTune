@@ -160,6 +160,9 @@ final class AudioDeviceMonitor: AudioDeviceProviding {
                 // etc.) pass through.
                 if deviceID.isAggregateDevice() && name.hasPrefix("FineTune-") { continue }
 
+                // The "FineTune Mix" capture device is for other apps to record from.
+                if uid == MixCaptureDevice.uid { continue }
+
                 // Respect the driver's own opt-out. `kAudioDevicePropertyIsHidden` is
                 // how drivers signal "maintenance/utility device, don't show in
                 // pickers" — mirrors what Apple's System Settings does.

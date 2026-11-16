@@ -264,6 +264,7 @@ final class AudioEngine {
             Task { @MainActor in
                 if self.permission.status == .authorized {
                     self.processMonitor.start()
+                    MixCaptureDevice.start()
                 }
                 self.deviceMonitor.start()
                 self.bluetoothDeviceMonitor.start()
@@ -305,6 +306,7 @@ final class AudioEngine {
                     self.processMonitor.start()
                     self.applyPersistedSettings()
                     self.startHealthMonitor()
+                    MixCaptureDevice.start()
                     self.logger.info("Audio capture authorized — process monitor started")
                 } else {
                     self.observePermissionGranted()

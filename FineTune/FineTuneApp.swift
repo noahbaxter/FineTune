@@ -254,6 +254,7 @@ struct FineTuneApp: App {
                 monitor.stop()
                 accessibilityService.stop()
                 hud.shutdown()
+                MixCaptureDevice.stop()
                 settings.flushSync()
             }
         }
